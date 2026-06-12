@@ -168,7 +168,7 @@ nav.stuck{
 .h-eyebrow{
   font-family:'DM Mono',monospace;font-size:.62rem;
   letter-spacing:.42em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:2.5rem;opacity:0;animation:fup .7s .3s forwards;position:relative;z-index:1;
+  margin-bottom:2.5rem;opacity:0;position:relative;z-index:1;
   text-shadow:0 0 20px rgba(201,169,110,.4);
 }
 .h-title{
@@ -186,18 +186,18 @@ nav.stuck{
 .h-sub{
   font-size:.95rem;color:var(--muted);max-width:460px;font-weight:400;
   margin-bottom:3.5rem;line-height:1.9;
-  opacity:0;animation:fup .8s 1.1s forwards;position:relative;z-index:1;
+  opacity:0;position:relative;z-index:1;
   letter-spacing:.01em;
 }
 .h-btns{
   display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;
-  opacity:0;animation:fup .8s 1.3s forwards;position:relative;z-index:1;
+  opacity:0;position:relative;z-index:1;
 }
 /* Scroll hint */
 .h-scroll{
   position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:.6rem;
-  opacity:0;animation:fup 1s 1.8s forwards;
+  opacity:0;
 }
 .h-scroll span{
   font-family:'DM Mono',monospace;font-size:.55rem;
@@ -493,10 +493,15 @@ footer{border-top:1px solid var(--border);padding:5.5rem 3rem 3rem}
 @keyframes fup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes sup{from{transform:translateY(108%)}to{transform:translateY(0)}}
 
-/* ── REVEAL ────────────────────────────────────────────────── */
-.rv{opacity:0;transform:translateY(34px);transition:opacity .85s ease,transform .85s ease}
-.rv.in{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}
+/* ── PARTICLE CANVAS ───────────────────────────────────────── */
+#particle-canvas{
+  position:fixed;inset:0;pointer-events:none;z-index:1;
+  opacity:.55;
+}
+
+/* ── REVEAL (handled by GSAP) ──────────────────────────────── */
+.rv{opacity:0}
+.d1,.d2,.d3{} /* stagger delays handled in JS */
 
 /* ── RESPONSIVE ────────────────────────────────────────────── */
 

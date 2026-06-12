@@ -54,13 +54,233 @@ document.querySelectorAll('.mag').forEach(el=>{
   });
 });
 
-/* ── SCROLL REVEAL ── */
-const rvObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('in'); rvObs.unobserve(e.target); }
+/* ══════════════════════════════════════════════════════════════
+   1. LENIS SMOOTH SCROLL (with mobile-safe fallback)
+══════════════════════════════════════════════════════════════ */
+try {
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 1.25,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function lenisRaf(time){ lenis.raf(time); requestAnimationFrame(lenisRaf); }
+    requestAnimationFrame(lenisRaf);
+    if (typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+  }
+} catch(e) { console.warn('Lenis failed, using native scroll', e); }
+
+if (typeof gsap !== 'undefined') { gsap.ticker.lagSmoothing(0); }
+
+/* ══════════════════════════════════════════════════════════════
+   2. GSAP SCROLL REVEAL
+══════════════════════════════════════════════════════════════ */
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.rv').forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        delay: el.classList.contains('d1') ? 0.1
+             : el.classList.contains('d2') ? 0.22
+             : el.classList.contains('d3') ? 0.34 : 0,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
   });
-},{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+  // Hero stagger
+  const heroTl = gsap.timeline({ delay: 0.2 });
+  heroTl
+    .fromTo('.h-eyebrow',
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+    .fromTo('.h-title .inn',
+      { y: '108%' },
+      { y: '0%', duration: 0.75, ease: 'expo.out', stagger: 0.08 }, '-=0.3')
+    .fromTo('.h-sub',
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
+    .fromTo('.h-btns',
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+    .fromTo('.h-scroll',
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.3');
+
+  gsap.fromTo('nav',
+    { opacity: 0, y: -12 },
+    { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.1 }
+  );
+
+  gsap.utils.toArray('.p-card').forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, x: i % 2 === 0 ? -50 : 50 },
+      {
+        opacity: 1, x: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  });
+
+  gsap.fromTo('.c-item',
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1, y: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: '.c-grid',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    }
+  );
+} else {
+  // GSAP unavailable — make all .rv elements visible immediately
+  document.querySelectorAll('.rv,.h-eyebrow,.h-sub,.h-btns,.h-scroll').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+
+
+
+/* ══════════════════════════════════════════════════════════════
+   4. ENHANCED MAGNETIC CURSOR (desktop only)
+══════════════════════════════════════════════════════════════ */
+if (window.matchMedia('(hover: hover)').matches && typeof gsap !== 'undefined') {
+  try {
+    document.querySelectorAll('.mag, .btn-p, .btn-g, .n-cta').forEach(el => {
+      const clone = el.cloneNode(true);
+      el.parentNode.replaceChild(clone, el);
+
+      clone.addEventListener('mousemove', e => {
+        const r = clone.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width  / 2) * 0.35;
+        const dy = (e.clientY - r.top  - r.height / 2) * 0.35;
+        gsap.to(clone, { x: dx, y: dy, duration: 0.25, ease: 'power2.out' });
+        gsap.to('#cur-ring', { scale: 1.8, borderColor: 'var(--accent)', duration: 0.2 });
+      });
+
+      clone.addEventListener('mouseleave', () => {
+        gsap.to(clone, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+        gsap.to('#cur-ring', { scale: 1, borderColor: 'rgba(201,169,110,.45)', duration: 0.35 });
+      });
+    });
+
+    // Click burst
+    document.addEventListener('click', e => {
+      const burst = document.createElement('div');
+      burst.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;
+        width:6px;height:6px;border-radius:50%;background:var(--accent);
+        pointer-events:none;z-index:9998;transform:translate(-50%,-50%);`;
+      document.body.appendChild(burst);
+      gsap.to(burst, { scale: 6, opacity: 0, duration: 0.55, ease: 'power2.out',
+        onComplete: () => burst.remove() });
+    });
+  } catch(e) { console.warn('Magnetic cursor failed', e); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. PARTICLE BACKGROUND
+══════════════════════════════════════════════════════════════ */
+try {
+  const canvas = document.getElementById('particle-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], mouse = { x: -9999, y: -9999 };
+
+    function resizeCanvas(){
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+    // Fewer particles on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    const COUNT = isMobile
+      ? Math.min(55, Math.floor((window.innerWidth * window.innerHeight) / 14000))
+      : Math.min(120, Math.floor((window.innerWidth * window.innerHeight) / 9000));
+
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.5 + 0.4,
+        alpha: Math.random() * 0.5 + 0.1,
+      });
+    }
+
+    function drawParticles(){
+      ctx.clearRect(0, 0, W, H);
+
+      // Connection lines
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(201,169,110,${(1 - dist/130) * 0.1})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        const mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+        const md = Math.sqrt(mdx*mdx + mdy*mdy);
+        if (md < 100 && md > 0) {
+          const force = (100 - md) / 100;
+          p.vx += (mdx / md) * force * 0.6;
+          p.vy += (mdy / md) * force * 0.6;
+        }
+        const spd = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+        if (spd > 2) { p.vx = (p.vx/spd)*2; p.vy = (p.vy/spd)*2; }
+        p.vx *= 0.98; p.vy *= 0.98;
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+        ctx.beginPath();
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+        grad.addColorStop(0, `rgba(201,169,110,${p.alpha})`);
+        grad.addColorStop(1, `rgba(201,169,110,0)`);
+        ctx.fillStyle = grad;
+        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+} catch(e) { console.warn('Particles failed', e); }
 
 /* ── COUNTER ANIMATION ── */
 function animCount(el, target, pre='', suf='', dur=1700){
