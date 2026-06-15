@@ -216,10 +216,12 @@
 
 <script>
 // ═══ SUPABASE PRODUCTS ═══
-const SUPABASE_URL = 'https://sbaiztnkunfrcvqfuhbn.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYWl6dG5rdW5mcmN2cWZ1aGJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0MTU5NzcsImV4cCI6MjA5Njk5MTk3N30.HWpee_oUvsG6OHOz-qpTU2SpJ0zJ6Womo9H57MUXsZw';
-
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+window.addEventListener('load', async function() {
+const { createClient } = window.supabase;
+const db = createClient(
+  'https://sbaiztnkunfrcvqfuhbn.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYWl6dG5rdW5mcmN2cWZ1aGJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0MTU5NzcsImV4cCI6MjA5Njk5MTk3N30.HWpee_oUvsG6OHOz-qpTU2SpJ0zJ6Womo9H57MUXsZw'
+);
 
 async function loadProducts() {
   try {
@@ -293,6 +295,7 @@ async function loadProducts() {
 }
 
 loadProducts();
+}); // end window.addEventListener
 </script>
 
 </body>
