@@ -123,10 +123,6 @@
   </div>
 </section>
 
-
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="prod-header rv">
@@ -134,8 +130,206 @@
     <h2 class="s-title" style="font-size:clamp(2.2rem,4vw,3.2rem)">Featured <em>Compounds</em></h2>
   </div>
 
-  <!-- Products loaded dynamically from Supabase -->
-  <div id="productsContainer"></div>
+  <!-- Retatrutide -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="reta">
+    <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">R</div>
+      <img src="assets/image_003.jpg" class="prod-photo"
+           alt="Retatrutide" style="opacity:1"/>
+    </div>
+    <div class="p-content" style="order:1">
+      <p class="p-tag">Featured Compound</p>
+      <h3 class="p-name">Retatrutide</h3>
+      <p class="p-desc">A triple-agonist peptide targeting GLP-1, GIP, and glucagon receptors — creating a powerful metabolic effect supporting significant fat loss, improved glycemic control, and potential muscle preservation. Clinical trials have shown weight reductions exceeding 20% within one year.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Pathways</p>
+          <p class="p-mv">GLP-1 · GIP · GCG</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Cycle Length</p>
+          <p class="p-mv">12–16 Weeks</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Clinical Results</p>
+          <p class="p-mv">&gt;20% Reduction</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- GHK-Cu -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="ghk">
+    <div class="p-content" style="order:1">
+      <p class="p-tag">Copper Peptide (Tripeptide-1)</p>
+      <h3 class="p-name">GHK-Cu 100mg</h3>
+      <p class="p-desc">A naturally occurring copper-binding peptide recognized for powerful regenerative and tissue-repair properties. Widely studied for stimulating collagen production, accelerating wound healing, and supporting cellular repair across dermatological, recovery, and longevity research.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Category</p>
+          <p class="p-mv">Copper Peptide</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Quantity</p>
+          <p class="p-mv">100 mg</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Key Benefits</p>
+          <p class="p-mv">Regeneration · Repair</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+    <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">G</div>
+      <img src="assets/image_004.jpg" class="prod-photo"
+           alt="GHK-Cu" style="opacity:1"/>
+    </div>
+  </div>
+
+  <!-- BPC-157 TB 500 -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="bpc">
+    <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">B</div>
+      <img src="assets/image_005.jpg" class="prod-photo"
+           alt="BPC-157 TB 500" style="opacity:1"/>
+    </div>
+    <div class="p-content" style="order:1">
+      <p class="p-tag">Regenerative Peptide Blend</p>
+      <h3 class="p-name">BPC-157 TB 500</h3>
+      <p class="p-desc">A synergistic peptide blend combining two extensively researched compounds. BPC-157 supports healing of muscles, tendons, ligaments, and the digestive system, while TB500 drives enhanced cellular repair, tissue regeneration, and improved mobility — making this combination a leading focus in recovery, performance, and longevity-focused research.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Peptides</p>
+          <p class="p-mv">BPC-157 · TB500</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Quantity</p>
+          <p class="p-mv">5 mg</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Purity</p>
+          <p class="p-mv">99%</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- MOTS-c -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="mots">
+    <div class="p-content" style="order:1">
+      <p class="p-tag">Mitochondrial Peptide</p>
+      <h3 class="p-name">MOTS-c</h3>
+      <p class="p-desc">A mitochondria-derived peptide recognized for its potential role in supporting cellular energy production, metabolic function, and overall longevity research. Widely studied for its influence on mitochondrial health, MOTS-c is believed to help regulate energy utilization, improve metabolic flexibility, and support physical performance at the cellular level. Research suggests MOTS-c may assist in enhancing glucose metabolism, improving insulin sensitivity, and supporting the body's natural response to metabolic stress — making it a growing area of interest in performance, weight management, and healthy aging research.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Pathways</p>
+          <p class="p-mv">Metabolism · Mitochondrial Function · AMPK Activation</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Category</p>
+          <p class="p-mv">Mitochondrial Peptide</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Quantity</p>
+          <p class="p-mv">10 mg</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+    <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">M</div>
+      <img src="assets/image_006.png" class="prod-photo" alt="MOTS-c" style="opacity:1"/>
+    </div>
+  </div>
+
+  <!-- Glutathione -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="glut">
+    <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">G</div>
+      <img src="assets/image_007.webp" class="prod-photo"
+           alt="Glutathione 1500mg" style="opacity:1"/>
+    </div>
+    <div class="p-content" style="order:1">
+      <p class="p-tag">Antioxidant Peptide</p>
+      <h3 class="p-name">Glutathione</h3>
+      <p class="p-desc">A naturally occurring antioxidant compound widely recognized for its powerful role in cellular protection, detoxification, and overall wellness support. Found in nearly every cell of the body, glutathione defends against oxidative stress, supports immune function, and maintains healthy cellular activity. Research suggests it may contribute to improved skin appearance, enhanced recovery, reduced inflammation, and mitochondrial health — making it a highly regarded compound in anti-aging, detoxification, and performance-focused research.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Pathways</p>
+          <p class="p-mv">Antioxidant Defense · Detoxification · Cellular Protection</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Category</p>
+          <p class="p-mv">Antioxidant Peptide</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Quantity</p>
+          <p class="p-mv">1500 mg</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- Tesamorelin -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="tesa">
+    <div class="p-content" style="order:1">
+      <p class="p-tag">Growth Hormone Secretagogue</p>
+      <h3 class="p-name">Tesamorelin</h3>
+      <p class="p-desc">A growth hormone-releasing hormone (GHRH) analog widely studied for its ability to stimulate the body's natural production of growth hormone and IGF-1. Recognized for its potential to support fat metabolism, muscle preservation, and recovery processes, Tesamorelin has been researched for its role in promoting reductions in visceral fat, improving metabolic function, and supporting lean muscle maintenance through growth hormone signaling pathways. Research also highlights its potential in supporting sleep quality, cognitive function, and overall healthy aging through enhanced hormonal activity.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Pathways</p>
+          <p class="p-mv">GHRH · Growth Hormone · IGF-1</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Category</p>
+          <p class="p-mv">Growth Hormone Secretagogue</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Quantity</p>
+          <p class="p-mv">10 mg</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+    <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">T</div>
+      <img src="assets/image_008.png" class="prod-photo" alt="Tesamorelin 10mg" style="opacity:1"/>
+    </div>
+  </div>
+
+  <!-- L-Carnitine -->
+  <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr" data-p="lcar">
+    <div class="p-img" style="order:1;aspect-ratio:unset;min-height:540px">
+      <div class="p-ph">L</div>
+      <img src="assets/image_009.png" class="prod-photo"
+           alt="L-Carnitine 1200mg" style="opacity:1"/>
+    </div>
+    <div class="p-content" style="order:2">
+      <p class="p-tag">Metabolic Support Compound</p>
+      <h3 class="p-name">L-Carnitine</h3>
+      <p class="p-desc">A naturally occurring amino acid derivative widely studied for its role in cellular energy production and metabolic health. L-Carnitine is recognized for its potential to support fatty acid transport, energy metabolism, and exercise recovery by facilitating the transport of long-chain fatty acids into the mitochondria for conversion into usable fuel. Research also highlights its potential in supporting cardiovascular health, cognitive function, and healthy aging — making it a widely regarded compound in sports nutrition, metabolic health, and longevity-focused investigations.</p>
+      <div class="p-meta">
+        <div class="p-mi">
+          <p class="p-ml">Pathways</p>
+          <p class="p-mv">Fatty Acid Transport · Mitochondrial Energy Production · Cellular Metabolism</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Category</p>
+          <p class="p-mv">Metabolic Support Compound</p>
+        </div>
+        <div class="p-mi">
+          <p class="p-ml">Quantity</p>
+          <p class="p-mv">500 mg</p>
+        </div>
+      </div>
+      <a href="#products" class="arr">View Product Details <span>→</span></a>
+    </div>
+  </div>
 
 </section>
 
@@ -213,90 +407,5 @@
 </footer>
 
   <script src="script.js"></script>
-
-<script>
-// ═══ SUPABASE PRODUCTS ═══
-window.addEventListener('load', async function() {
-const { createClient } = window.supabase;
-const db = createClient(
-  'https://sbaiztnkunfrcvqfuhbn.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYWl6dG5rdW5mcmN2cWZ1aGJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0MTU5NzcsImV4cCI6MjA5Njk5MTk3N30.HWpee_oUvsG6OHOz-qpTU2SpJ0zJ6Womo9H57MUXsZw'
-);
-
-async function loadProducts() {
-  try {
-    const { data, error } = await db
-      .from('products')
-      .select('*')
-      .order('featured', { ascending: false })
-      .order('id', { ascending: true });
-
-    if (error) throw error;
-
-    const container = document.getElementById('productsContainer');
-    if (!data || data.length === 0) {
-      container.innerHTML = '<p style="text-align:center;color:var(--accent);padding:60px 20px;">No products available yet.</p>';
-      return;
-    }
-
-    // Alternate layout left/right like original
-    container.innerHTML = data.map((p, i) => {
-      const imgOrder  = i % 2 === 0 ? 2 : 2;
-      const contOrder = i % 2 === 0 ? 1 : 1;
-      const imgFirst  = i % 2 !== 0;
-
-      return `
-        <div class="p-card rv tilt" style="grid-template-columns:1fr 1fr">
-          ${imgFirst ? `
-          <div class="p-img" style="order:1;aspect-ratio:unset;min-height:540px">
-            <div class="p-ph">${p.product_name ? p.product_name.charAt(0) : '?'}</div>
-            ${p.product_image ? `<img src="${p.product_image}" class="prod-photo" alt="${p.product_name}" style="opacity:1"/>` : ''}
-          </div>` : ''}
-          <div class="p-content" style="order:${imgFirst ? 2 : 1}">
-            <p class="p-tag">${p.category || 'Research Compound'}</p>
-            <h3 class="p-name">${p.product_name}</h3>
-            <p class="p-desc">${p.description || ''}</p>
-            <div class="p-meta">
-              ${p.cycle_length ? `
-              <div class="p-mi">
-                <p class="p-ml">Cycle Length</p>
-                <p class="p-mv">${p.cycle_length}</p>
-              </div>` : ''}
-              ${p.quantity ? `
-              <div class="p-mi">
-                <p class="p-ml">Quantity</p>
-                <p class="p-mv">${p.quantity}</p>
-              </div>` : ''}
-              ${p.purity ? `
-              <div class="p-mi">
-                <p class="p-ml">Purity</p>
-                <p class="p-mv">${p.purity}</p>
-              </div>` : ''}
-              ${p.clinical_results ? `
-              <div class="p-mi">
-                <p class="p-ml">Clinical Results</p>
-                <p class="p-mv">${p.clinical_results}</p>
-              </div>` : ''}
-            </div>
-            <a href="#products" class="arr">View Product Details <span>→</span></a>
-          </div>
-          ${!imgFirst ? `
-          <div class="p-img" style="order:2;aspect-ratio:unset;min-height:540px">
-            <div class="p-ph">${p.product_name ? p.product_name.charAt(0) : '?'}</div>
-            ${p.product_image ? `<img src="${p.product_image}" class="prod-photo" alt="${p.product_name}" style="opacity:1"/>` : ''}
-          </div>` : ''}
-        </div>
-      `;
-    }).join('');
-
-  } catch (err) {
-    console.error('Error loading products:', err);
-  }
-}
-
-loadProducts();
-}); // end window.addEventListener
-</script>
-
 </body>
 </html>
