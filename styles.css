@@ -306,6 +306,55 @@ section{position:relative;z-index:2}
   border-top:1px solid var(--border);
 }
 
+/* Category filter tabs */
+.cat-tabs{
+  display:flex;align-items:center;justify-content:center;
+  gap:.6rem;flex-wrap:wrap;
+  margin:0 auto 4.5rem;padding:0 2rem;
+  max-width:900px;
+}
+.cat-tab{
+  font-family:'Space Grotesk',sans-serif;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+  padding:.65rem 1.7rem;
+  border-radius:999px;
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  cursor:none;white-space:nowrap;
+  transition:all .35s cubic-bezier(.16,1,.3,1);
+}
+.cat-tab:hover{
+  border-color:rgba(201,169,110,.4);
+  color:var(--white);
+  background:rgba(201,169,110,.05);
+}
+.cat-tab.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#080603;
+  box-shadow:0 6px 20px rgba(201,169,110,.25);
+}
+
+/* Category section dividers */
+.cat-divider{
+  display:flex;align-items:center;gap:1.6rem;
+  max-width:1380px;margin:0 auto;
+  padding:4.5rem 4rem 2.5rem;
+}
+.cat-divider::before,.cat-divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,transparent,var(--border),transparent);
+}
+.cat-divider:first-of-type{padding-top:0}
+.cat-divider-label{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--accent);white-space:nowrap;
+  text-shadow:0 0 18px rgba(201,169,110,.25);
+}
+
 .p-card{
   display:grid;grid-template-columns:1fr 1fr;
   border-top:1px solid var(--border);overflow:hidden;
@@ -531,6 +580,10 @@ footer{border-top:1px solid var(--border);padding:5.5rem 3rem 3rem}
 
   /* Products */
   .prod-header{padding:4.5rem 0 3.5rem}
+  .cat-tabs{margin-bottom:3rem;gap:.5rem}
+  .cat-tab{padding:.55rem 1.3rem;font-size:.66rem}
+  .cat-divider{padding:3rem 1.5rem 1.8rem;gap:1rem}
+  .cat-divider-label{font-size:.66rem;letter-spacing:.22em}
   .p-card{grid-template-columns:1fr!important;clip-path:none!important}
   /* Reset order so image always appears first on mobile */
   .p-img{order:1!important;aspect-ratio:unset;height:420px;min-height:unset!important;
@@ -1101,3 +1154,309 @@ nav.stuck::after {
   opacity: 0; transition: opacity .5s;
 }
 [data-p="lcar"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* GHRP-6 Acetate — royal navy blue (matches the blue cap) */
+[data-p="ghrp"] .p-tag             { color: #4d72d9 }
+[data-p="ghrp"] .p-content::before { background: linear-gradient(to right,#4d72d9,transparent) }
+[data-p="ghrp"].p-card:hover        { border-color: rgba(77,114,217,.28) }
+[data-p="ghrp"] .arr               { color: #4d72d9 }
+[data-p="ghrp"] .arr::after        { background: #4d72d9 }
+[data-p="ghrp"] .p-mi:hover        { background: rgba(77,114,217,.06) }
+[data-p="ghrp"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(77,114,217,.13), transparent 65%) !important;
+}
+[data-p="ghrp"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(77,114,217,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="ghrp"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* HCG — deep crimson red (matches the red cap) */
+[data-p="hcg"] .p-tag             { color: #c0394d }
+[data-p="hcg"] .p-content::before { background: linear-gradient(to right,#c0394d,transparent) }
+[data-p="hcg"].p-card:hover         { border-color: rgba(192,57,77,.28) }
+[data-p="hcg"] .arr               { color: #c0394d }
+[data-p="hcg"] .arr::after        { background: #c0394d }
+[data-p="hcg"] .p-mi:hover        { background: rgba(192,57,77,.06) }
+[data-p="hcg"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(192,57,77,.13), transparent 65%) !important;
+}
+[data-p="hcg"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(192,57,77,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="hcg"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* KLOW — deep purple (matches the purple cap) */
+[data-p="klow"] .p-tag             { color: #6b3fa0 }
+[data-p="klow"] .p-content::before { background: linear-gradient(to right,#6b3fa0,transparent) }
+[data-p="klow"].p-card:hover        { border-color: rgba(107,63,160,.28) }
+[data-p="klow"] .arr               { color: #6b3fa0 }
+[data-p="klow"] .arr::after        { background: #6b3fa0 }
+[data-p="klow"] .p-mi:hover        { background: rgba(107,63,160,.06) }
+[data-p="klow"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(107,63,160,.13), transparent 65%) !important;
+}
+[data-p="klow"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(107,63,160,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="klow"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* IGF-1 LR3 — royal blue (matches the blue cap) */
+[data-p="igf"] .p-tag              { color: #1e5ba8 }
+[data-p="igf"] .p-content::before  { background: linear-gradient(to right,#1e5ba8,transparent) }
+[data-p="igf"].p-card:hover         { border-color: rgba(30,91,168,.28) }
+[data-p="igf"] .arr                { color: #1e5ba8 }
+[data-p="igf"] .arr::after         { background: #1e5ba8 }
+[data-p="igf"] .p-mi:hover         { background: rgba(30,91,168,.06) }
+[data-p="igf"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(30,91,168,.13), transparent 65%) !important;
+}
+[data-p="igf"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(30,91,168,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="igf"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* CJC-1295 + Ipamorelin — silver/light grey (matches the white cap) */
+[data-p="cjc"] .p-tag             { color: #a8a8a8 }
+[data-p="cjc"] .p-content::before { background: linear-gradient(to right,#a8a8a8,transparent) }
+[data-p="cjc"].p-card:hover        { border-color: rgba(168,168,168,.28) }
+[data-p="cjc"] .arr               { color: #a8a8a8 }
+[data-p="cjc"] .arr::after        { background: #a8a8a8 }
+[data-p="cjc"] .p-mi:hover        { background: rgba(168,168,168,.06) }
+[data-p="cjc"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(168,168,168,.13), transparent 65%) !important;
+}
+[data-p="cjc"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(168,168,168,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="cjc"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* AICAR — dark charcoal (matches the black cap) */
+[data-p="aicar"] .p-tag            { color: #3a3a3a }
+[data-p="aicar"] .p-content::before { background: linear-gradient(to right,#3a3a3a,transparent) }
+[data-p="aicar"].p-card:hover       { border-color: rgba(58,58,58,.28) }
+[data-p="aicar"] .arr              { color: #3a3a3a }
+[data-p="aicar"] .arr::after       { background: #3a3a3a }
+[data-p="aicar"] .p-mi:hover       { background: rgba(58,58,58,.06) }
+[data-p="aicar"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(58,58,58,.13), transparent 65%) !important;
+}
+[data-p="aicar"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(58,58,58,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="aicar"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* PEG-MGF — slate grey (matches the black cap) */
+[data-p="pegmgf"] .p-tag            { color: #4a5568 }
+[data-p="pegmgf"] .p-content::before { background: linear-gradient(to right,#4a5568,transparent) }
+[data-p="pegmgf"].p-card:hover       { border-color: rgba(74,85,104,.28) }
+[data-p="pegmgf"] .arr              { color: #4a5568 }
+[data-p="pegmgf"] .arr::after       { background: #4a5568 }
+[data-p="pegmgf"] .p-mi:hover       { background: rgba(74,85,104,.06) }
+[data-p="pegmgf"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(74,85,104,.13), transparent 65%) !important;
+}
+[data-p="pegmgf"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(74,85,104,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="pegmgf"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* SELANK — teal/cyan (cognitive/neuro focus) */
+[data-p="selank"] .p-tag            { color: #2a9b9d }
+[data-p="selank"] .p-content::before { background: linear-gradient(to right,#2a9b9d,transparent) }
+[data-p="selank"].p-card:hover       { border-color: rgba(42,155,157,.28) }
+[data-p="selank"] .arr              { color: #2a9b9d }
+[data-p="selank"] .arr::after       { background: #2a9b9d }
+[data-p="selank"] .p-mi:hover       { background: rgba(42,155,157,.06) }
+[data-p="selank"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(42,155,157,.13), transparent 65%) !important;
+}
+[data-p="selank"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(42,155,157,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="selank"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* PT-141 — purple-magenta (neuroregulatory/arousal focus) */
+[data-p="pt141"] .p-tag            { color: #8b3a8b }
+[data-p="pt141"] .p-content::before { background: linear-gradient(to right,#8b3a8b,transparent) }
+[data-p="pt141"].p-card:hover       { border-color: rgba(139,58,139,.28) }
+[data-p="pt141"] .arr              { color: #8b3a8b }
+[data-p="pt141"] .arr::after       { background: #8b3a8b }
+[data-p="pt141"] .p-mi:hover       { background: rgba(139,58,139,.06) }
+[data-p="pt141"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(139,58,139,.13), transparent 65%) !important;
+}
+[data-p="pt141"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(139,58,139,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="pt141"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* 5-Amino-1MQ — orange-amber (metabolic/energy focus) */
+[data-p="amino"] .p-tag            { color: #d97706 }
+[data-p="amino"] .p-content::before { background: linear-gradient(to right,#d97706,transparent) }
+[data-p="amino"].p-card:hover       { border-color: rgba(217,119,6,.28) }
+[data-p="amino"] .arr              { color: #d97706 }
+[data-p="amino"] .arr::after       { background: #d97706 }
+[data-p="amino"] .p-mi:hover       { background: rgba(217,119,6,.06) }
+[data-p="amino"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(217,119,6,.13), transparent 65%) !important;
+}
+[data-p="amino"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(217,119,6,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="amino"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* SS-31 — forest green (mitochondrial/energy focus) */
+[data-p="ss31"] .p-tag            { color: #2d5a3d }
+[data-p="ss31"] .p-content::before { background: linear-gradient(to right,#2d5a3d,transparent) }
+[data-p="ss31"].p-card:hover       { border-color: rgba(45,90,61,.28) }
+[data-p="ss31"] .arr              { color: #2d5a3d }
+[data-p="ss31"] .arr::after       { background: #2d5a3d }
+[data-p="ss31"] .p-mi:hover       { background: rgba(45,90,61,.06) }
+[data-p="ss31"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(45,90,61,.13), transparent 65%) !important;
+}
+[data-p="ss31"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(45,90,61,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="ss31"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* SEMAX — indigo (cognitive/neuro focus) */
+[data-p="semax"] .p-tag           { color: #4338ca }
+[data-p="semax"] .p-content::before { background: linear-gradient(to right,#4338ca,transparent) }
+[data-p="semax"].p-card:hover      { border-color: rgba(67,56,202,.28) }
+[data-p="semax"] .arr             { color: #4338ca }
+[data-p="semax"] .arr::after      { background: #4338ca }
+[data-p="semax"] .p-mi:hover      { background: rgba(67,56,202,.06) }
+[data-p="semax"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(67,56,202,.13), transparent 65%) !important;
+}
+[data-p="semax"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(67,56,202,.2), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="semax"].p-card:hover .p-img::after { opacity: 1 !important }
+
+/* VIP — PREMIUM GOLD FLAGSHIP (First to Malaysia, First and Only) */
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255,215,0,.5), 0 0 30px rgba(255,215,0,.3) }
+  50% { box-shadow: 0 0 25px rgba(255,215,0,.7), 0 0 45px rgba(255,215,0,.4) }
+}
+@keyframes badge-pulse {
+  0%, 100% { transform: translateX(-50%) scale(1) }
+  50% { transform: translateX(-50%) scale(1.05) }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+[data-p="vip"] .p-tag             { color: #ffd700; font-weight: 700; letter-spacing: 0.5px }
+[data-p="vip"] .p-content::before { background: linear-gradient(to right,#ffd700,transparent) }
+[data-p="vip"].p-card:hover        { border-color: rgba(255,215,0,.6) !important; box-shadow: 0 0 40px rgba(255,215,0,.35) !important; transform: translateY(-2px) }
+[data-p="vip"] .arr               { color: #ffd700; font-weight: 700 }
+[data-p="vip"] .arr::after        { background: #ffd700 }
+[data-p="vip"] .p-mi:hover        { background: rgba(255,215,0,.12) }
+[data-p="vip"] .p-name            { color: #ffd700; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 900 }
+[data-p="vip"] .vip-exclusive {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #1a1a1a;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  font-weight: 900;
+  margin-left: 10px;
+  letter-spacing: 1.2px;
+  box-shadow: 0 2px 8px rgba(255,215,0,.3);
+}
+[data-p="vip"] .vip-badge {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffc700 100%);
+  color: #1a1a1a;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-weight: 900;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(255,215,0,.5), 0 0 30px rgba(255,215,0,.3), inset 0 1px 0 rgba(255,255,255,.4);
+  white-space: nowrap;
+  animation: badge-glow 3s ease-in-out infinite, badge-pulse 2.5s ease-in-out infinite;
+  border: 1px solid rgba(255,255,255,.3);
+}
+[data-p="vip"] .vip-badge::before {
+  content: "👑 ";
+  margin-right: 4px;
+}
+[data-p="vip"].vip-flagship {
+  border: 2px solid rgba(255,215,0,.5) !important;
+  background: linear-gradient(135deg, rgba(255,215,0,.03), rgba(255,215,0,.015)) !important;
+  position: relative;
+}
+[data-p="vip"].vip-flagship::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255,215,0,.6), rgba(255,215,0,.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+[data-p="vip"].vip-flagship:hover::before { opacity: 1 }
+[data-p="vip"] .p-img::before {
+  background: radial-gradient(ellipse 55% 70% at 50% 55%,
+    rgba(255,215,0,.22), transparent 65%) !important;
+}
+[data-p="vip"] .p-img::after {
+  background: radial-gradient(ellipse 80% 90% at 50% 100%,
+    rgba(255,215,0,.32), transparent 60%) !important;
+  opacity: 0; transition: opacity .5s;
+}
+[data-p="vip"].p-card:hover .p-img::after { opacity: 1 !important }
+[data-p="vip"].p-card:hover .vip-badge { 
+  box-shadow: 0 0 25px rgba(255,215,0,.8), 0 0 50px rgba(255,215,0,.5), inset 0 1px 0 rgba(255,255,255,.5) 
+}

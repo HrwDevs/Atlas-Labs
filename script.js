@@ -383,3 +383,47 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   }
   setTimeout(dismiss, 900);
 })();
+
+/* ── CATEGORY FILTERING ── */
+function filterProducts(category) {
+  // Update active tab
+  document.querySelectorAll('.cat-tab').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('data-filter') === category);
+  });
+
+  // Show/hide products based on category
+  document.querySelectorAll('.p-card').forEach(card => {
+    const cardCategory = card.getAttribute('data-category');
+    if (cardCategory === category) {
+      card.style.display = 'grid';
+      // Force instantly visible — bypasses GSAP's scroll-triggered
+      // fade-in, which would otherwise wait for a scroll position
+      // calculated before the tab filter changed the page layout.
+      card.style.opacity = '1';
+      card.style.transform = 'none';
+      card.style.animation = 'fadeIn .35s ease-out';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  // Hide category dividers that don't match
+  document.querySelectorAll('.cat-divider').forEach(divider => {
+    divider.style.display = (divider.getAttribute('id') === category) ? 'flex' : 'none';
+  });
+
+  // Recalculate scroll trigger positions now that the layout has
+  // changed size, so any remaining scroll-based effects stay accurate.
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
+  }
+}
+
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    filterProducts(tab.getAttribute('data-filter'));
+  });
+});
+
+// Apply default filter (Performance) immediately on initial render
+filterProducts('performance');
